@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -63,6 +63,14 @@ const Signup = () => {
     },
     [email, password, navigate],
   );
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      navigate('/todo');
+    }
+  }, [navigate]);
 
   return (
     <section>
