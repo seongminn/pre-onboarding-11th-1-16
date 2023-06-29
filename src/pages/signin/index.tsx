@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validationError, setValidationError] = useState('');
+  const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +20,20 @@ const Signin = () => {
   const handleSignIn = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
+
+      if (!email.includes('@')) {
+        setValidationError('유효한 이메일 주소를 입력해주세요.');
+        setDisabled(true);
+
+        return;
+      }
+
+      if (password.length < 8) {
+        setValidationError('비밀번호는 최소 8자 이상이어야 합니다.');
+        setDisabled(true);
+
+        return;
+      }
 
       axios
         .post(
@@ -68,9 +84,10 @@ const Signin = () => {
           placeholder="비밀번호를 입력해주세요!"
           data-testid="password-input"
         />
-        <button type="submit" data-testid="singin-button">
+        <button type="submit" disabled={disabled} data-testid="singin-button">
           제출
         </button>
+        {validationError && <div>{validationError}</div>}
       </form>
     </section>
   );
