@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
 import { TOKEN_KEY } from './constants/auth';
@@ -28,13 +28,13 @@ function Router() {
 export default Router;
 
 const PrivateRouter = () => {
-  const token = getToken(TOKEN_KEY);
+  const token = useMemo(() => getToken(TOKEN_KEY), []);
 
   return token ? <Outlet /> : <Navigate to={PATH.SIGNIN} replace />;
 };
 
 const PublicRouter = () => {
-  const token = getToken(TOKEN_KEY);
+  const token = useMemo(() => getToken(TOKEN_KEY), []);
 
   return token ? <Navigate to={PATH.TODO} replace /> : <Outlet />;
 };
