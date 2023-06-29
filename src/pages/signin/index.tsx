@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [signInError, setSignInError] = useState('');
   const [validationError, setValidationError] = useState('');
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ const Signin = () => {
           window.location.reload();
         })
         .catch((error) => {
+          setSignInError(error.response.data);
           console.log(error.response);
         });
     },
@@ -87,6 +89,7 @@ const Signin = () => {
         <button type="submit" disabled={disabled} data-testid="singin-button">
           제출
         </button>
+        {signInError && <div>{signInError}</div>}
         {validationError && <div>{validationError}</div>}
       </form>
     </section>
