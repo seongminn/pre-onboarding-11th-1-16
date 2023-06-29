@@ -61,7 +61,7 @@ const Signup = () => {
           console.log(error.response);
         });
     },
-    [email, password],
+    [email, password, navigate],
   );
 
   return (
