@@ -1,6 +1,7 @@
-import axios from 'axios';
 import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { postSignin } from '@/apis/auth';
 
 const Signin = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ const Signin = () => {
   };
 
   const handleSignIn = useCallback(
-    (e: FormEvent) => {
+    async (e: FormEvent) => {
       e.preventDefault();
 
       if (!email.includes('@')) {
@@ -36,30 +37,16 @@ const Signin = () => {
         return;
       }
 
-      axios
-        .post(
-          'https://www.pre-onboarding-selection-task.shop/auth/signin',
-          {
-            email,
-            password,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
-        )
-        .then((response) => {
-          const token = response.data.access_token;
+      try {
+        const response = await postSignin({ email, password });
 
-          localStorage.setItem('token', token);
-          navigate('/todo');
-          window.location.reload();
-        })
-        .catch((error) => {
-          setSignInError(error.response.data);
-          console.log(error.response);
-        });
+        // localstorage 저장은 이미 postSignin 함수에서 처리했으므로 제거
+        navigate('/todo');
+        window.location.reload();
+      } catch (error: any) {
+        setSignInError(error.response.data);
+        console.log(error.response);
+      }
     },
     [email, password, navigate],
   );
@@ -70,7 +57,7 @@ const Signin = () => {
     if (token) {
       navigate('/todo');
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <section>

@@ -1,6 +1,7 @@
-import axios from 'axios';
 import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { postSignup } from '@/apis/auth';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ const Signup = () => {
   };
 
   const handleSignUp = useCallback(
-    (e: FormEvent) => {
+    async (e: FormEvent) => {
       e.preventDefault();
 
       if (!email.includes('@')) {
@@ -36,30 +37,14 @@ const Signup = () => {
         return;
       }
 
-      axios
-        .post(
-          'https://www.pre-onboarding-selection-task.shop/auth/signup',
-          {
-            email,
-            password,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
-        )
-        .then((response) => {
-          console.log(response);
-          if (response.status === 201) {
-            alert('회원가입이 완료되었습니다!');
-            navigate('/signin');
-          }
-        })
-        .catch((error) => {
-          setSignUpError(error.response.data);
-          console.log(error.response);
-        });
+      try {
+        const response = await postSignup({ email, password });
+
+        navigate('/signin');
+      } catch (error: any) {
+        setSignUpError(error.response.data);
+        console.log(error.response);
+      }
     },
     [email, password, navigate],
   );
