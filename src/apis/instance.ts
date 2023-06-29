@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { TOKEN_KEY } from '@/constants/auth';
+
 const BASE_URL = 'https://www.pre-onboarding-selection-task.shop/';
 
 export const instance = axios.create({
@@ -8,7 +10,7 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('user-token');
+  const token = localStorage.getItem(TOKEN_KEY);
 
   config.headers['Authorization'] = token ? `Bearer ${token}` : '';
 
