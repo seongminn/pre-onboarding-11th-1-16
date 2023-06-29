@@ -19,9 +19,8 @@ const AuthForm = (props: AuthFormProps) => {
         이메일
       </label>
       <input
-        id="email"
+        name="email"
         type="text"
-        className="form-input"
         value={email}
         onChange={onChange}
         placeholder="이메일을 입력해주세요!"
@@ -32,9 +31,8 @@ const AuthForm = (props: AuthFormProps) => {
         비밀번호
       </label>
       <input
-        id="password"
+        name="password"
         type="password"
-        className="form-input"
         value={password}
         onChange={onChange}
         placeholder="비밀번호를 입력해주세요!"
