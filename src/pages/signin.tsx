@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { postSignin } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
+import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
 import { CredentialType, credentialValue } from '@/types/auth';
 
@@ -12,7 +13,7 @@ const Signin = () => {
 
   const handleSignIn = () => {
     postSignin(credentials).then(() => {
-      navigate('/todo');
+      navigate(PATH.TODO, { replace: true });
     });
   };
 
