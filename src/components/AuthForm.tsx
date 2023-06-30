@@ -58,7 +58,7 @@ const AuthForm = (props: AuthFormProps) => {
 const From = styled.form`
   display: flex;
   width: 20%;
-  height: 30%;
+  height: 35%;
   justify-content: space-around;
 
   flex-direction: column;

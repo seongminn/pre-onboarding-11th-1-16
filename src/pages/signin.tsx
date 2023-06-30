@@ -5,11 +5,8 @@ import { postSignin } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
 import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
-<<<<<<< HEAD:src/pages/signin/index.tsx
 import { Section } from '@/style/register';
-=======
 import { CredentialType, credentialValue } from '@/types/auth';
->>>>>>> upstream/main:src/pages/signin.tsx
 
 const SigninPage = () => {
   const { value: credentials, onChange } = useInput<CredentialType>(credentialValue);

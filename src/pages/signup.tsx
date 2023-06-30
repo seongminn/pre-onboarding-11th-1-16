@@ -5,11 +5,8 @@ import { postSignup } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
 import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
-<<<<<<< HEAD:src/pages/signup/index.tsx
 import { Section } from '@/style/register';
-=======
 import { CredentialType, credentialValue } from '@/types/auth';
->>>>>>> upstream/main:src/pages/signup.tsx
 
 const SignupPage = () => {
   const { value: credentials, onChange } = useInput<CredentialType>(credentialValue);
