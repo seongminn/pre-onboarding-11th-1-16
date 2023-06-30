@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { postSignin } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
 import useInput from '@/hooks/useInput';
+import { Section } from '@/style/register';
 
 const Signin = () => {
   const { value: credentials, onChange } = useInput({
@@ -25,7 +26,7 @@ const Signin = () => {
   };
 
   return (
-    <section>
+    <Section>
       <AuthForm
         title="로그인"
         email={credentials.email}
@@ -34,7 +35,7 @@ const Signin = () => {
         onSubmit={onSubmit}
         testId="signin-button"
       />
-    </section>
+    </Section>
   );
 };
 

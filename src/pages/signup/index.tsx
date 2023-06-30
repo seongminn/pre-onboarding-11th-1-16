@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { postSignup } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
 import useInput from '@/hooks/useInput';
+import { Section } from '@/style/register';
 
 const Signup = () => {
   const { value: credentials, onChange } = useInput({
@@ -25,7 +26,7 @@ const Signup = () => {
   };
 
   return (
-    <section>
+    <Section>
       <AuthForm
         title="회원가입"
         email={credentials.email}
@@ -34,7 +35,7 @@ const Signup = () => {
         onSubmit={onSubmit}
         testId="signup-button"
       />
-    </section>
+    </Section>
   );
 };
 
