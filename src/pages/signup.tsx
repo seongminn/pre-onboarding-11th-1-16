@@ -24,7 +24,7 @@ const Signup = () => {
   };
 
   return (
-    <section>
+    <section className="inner-wrapper">
       <AuthForm
         title="회원가입"
         email={credentials.email}
