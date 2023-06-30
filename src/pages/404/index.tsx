@@ -10,8 +10,10 @@ const NotFoundPage = () => {
 
   return (
     <div>
-      <span>404 Not Found</span>
-      <button onClick={handleButton}>홈으로 돌아가기</button>
+      <p>404 Not Found</p>
+      <button style={{ color: 'white', background: 'black' }} onClick={handleButton}>
+        홈으로 돌아가기
+      </button>
     </div>
   );
 };

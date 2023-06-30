@@ -1,6 +1,7 @@
 import { lazy, Suspense, useMemo } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
+import Loader from './components/common/Loader';
 import { TOKEN_KEY } from './constants/auth';
 import { PATH } from './constants/path';
 import { getToken } from './utils/token';
@@ -10,11 +11,9 @@ const SignupPage = lazy(() => import('@/pages/signup'));
 const TodoPage = lazy(() => import('@/pages/todo'));
 const NotFoundPage = lazy(() => import('@/pages/404'));
 
-const loader = () => <p>Loading...</p>;
-
 function Router() {
   return (
-    <Suspense fallback={loader()}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PrivateRouter />}>
           <Route path={PATH.TODO} element={<TodoPage />} />
