@@ -8,7 +8,7 @@ import { getToken } from './utils/token';
 
 const SigninPage = lazy(() => import('@/pages/signin'));
 const SignupPage = lazy(() => import('@/pages/signup'));
-const TodoPage = lazy(() => import('@/pages/todo'));
+// const TodoPage = lazy(() => import('@/pages/todo'));
 const NotFoundPage = lazy(() => import('@/pages/404'));
 
 function Router() {
@@ -16,7 +16,7 @@ function Router() {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PrivateRouter />}>
-          <Route path={PATH.TODO} element={<TodoPage />} />
+          {/* <Route path={PATH.TODO} element={<TodoPage />} /> */}
         </Route>
         <Route element={<PublicRouter />}>
           <Route path={PATH.SIGNIN} element={<SigninPage />} />
