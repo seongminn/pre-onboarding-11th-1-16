@@ -4,8 +4,9 @@ wanted 프리온보딩 1주차 과제입니다 🔥
 
 ## 배포 페이지
 
-[🎉 Team16 배포 링크]()
-(https://pre-onboarding-11th-1-16.netlify.app/)
+🎉 Team16 배포 링크 👇
+
+https://pre-onboarding-11th-1-16.netlify.app/
 
 ## 🛠️ 사용 라이브러리
 
