@@ -4,12 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { postSignin } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
 import useInput from '@/hooks/useInput';
+import { CredentialType, credentialValue } from '@/types/auth';
 
 const Signin = () => {
-  const { value: credentials, onChange } = useInput({
-    email: '',
-    password: '',
-  });
+  const { value: credentials, onChange } = useInput<CredentialType>(credentialValue);
   const navigate = useNavigate();
 
   const handleSignIn = () => {
