@@ -46,9 +46,7 @@ const AuthForm = (props: AuthFormProps) => {
         placeholder="비밀번호를 입력해주세요!"
         data-testid="password-input"
       />
-      <p className={`form-log ${!isValidatePassword && 'error'}`}>
-        {!isValidatePassword ? AUTH_MESSAGE.PASSWORD_ERROR : AUTH_MESSAGE.PASSWORD_SUCCESS}
-      </p>
+      <p>{!isValidatePassword ? AUTH_MESSAGE.PASSWORD_ERROR : AUTH_MESSAGE.PASSWORD_SUCCESS}</p>
 
       <button data-testid={testId} disabled={!isValidateEmail || !isValidatePassword}>
         제출

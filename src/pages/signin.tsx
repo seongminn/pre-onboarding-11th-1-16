@@ -7,7 +7,7 @@ import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
 import { CredentialType, credentialValue } from '@/types/auth';
 
-const Signin = () => {
+const SigninPage = () => {
   const { value: credentials, onChange } = useInput<CredentialType>(credentialValue);
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Signin = () => {
   };
 
   return (
-    <section className="inner-wrapper">
+    <section>
       <AuthForm
         title="로그인"
         email={credentials.email}
@@ -37,4 +37,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SigninPage;
