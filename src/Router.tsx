@@ -8,6 +8,7 @@ import { getToken } from './utils/token';
 const SigninPage = lazy(() => import('@/pages/signin'));
 const SignupPage = lazy(() => import('@/pages/signup'));
 const TodoPage = lazy(() => import('@/pages/todo'));
+const NotFoundPage = lazy(() => import('@/pages/404'));
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
           <Route path={PATH.SIGNIN} element={<SigninPage />} />
           <Route path={PATH.SIGNUP} element={<SignupPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );
