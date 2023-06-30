@@ -129,4 +129,12 @@ export const reset = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.5em;
+    &:hover {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
 `;

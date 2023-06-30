@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { ChangeEvent, FormEvent } from 'react';
 
 import { AUTH_MESSAGE } from '@/constants/validation';
@@ -18,7 +19,7 @@ const AuthForm = (props: AuthFormProps) => {
   const { isValidateEmail, isValidatePassword } = AuthValidator(email, password);
 
   return (
-    <form onSubmit={onSubmit} className="form">
+    <Form onSubmit={onSubmit} className="form">
       <h1 className="title">{title}</h1>
       <label htmlFor="email" className="form-label">
         이메일
@@ -47,12 +48,49 @@ const AuthForm = (props: AuthFormProps) => {
         data-testid="password-input"
       />
       <p>{!isValidatePassword ? AUTH_MESSAGE.PASSWORD_ERROR : AUTH_MESSAGE.PASSWORD_SUCCESS}</p>
-
       <button data-testid={testId} disabled={!isValidateEmail || !isValidatePassword}>
         제출
       </button>
-    </form>
+    </Form>
   );
 };
+
+const Form = styled.form`
+  display: flex;
+  width: 20%;
+  height: 35%;
+  justify-content: space-around;
+
+  flex-direction: column;
+  h1 {
+    font-size: 1.6em;
+  }
+  label {
+    font-size: small;
+  }
+  input {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 3px;
+    border: none;
+    &:focus {
+      outline: 2px solid rgb(179, 184, 204);
+    }
+  }
+  button {
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+    margin-top: 10px;
+    background-color: rgb(229, 234, 255);
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: rgb(179, 184, 204);
+    }
+  }
+`;
 
 export default AuthForm;

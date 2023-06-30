@@ -5,6 +5,7 @@ import { postSignin } from '@/apis/auth';
 import AuthForm from '@/components/auth/AuthForm';
 import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
+import { Section } from '@/styles/register';
 import { CredentialType, credentialValue } from '@/types/auth';
 
 const SigninPage = () => {
@@ -24,7 +25,7 @@ const SigninPage = () => {
   };
 
   return (
-    <section>
+    <Section>
       <AuthForm
         title="로그인"
         email={credentials.email}
@@ -33,7 +34,7 @@ const SigninPage = () => {
         onSubmit={onSubmit}
         testId="signin-button"
       />
-    </section>
+    </Section>
   );
 };
 

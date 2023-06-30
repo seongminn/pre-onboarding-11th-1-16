@@ -5,6 +5,7 @@ import { postSignup } from '@/apis/auth';
 import AuthForm from '@/components/auth/AuthForm';
 import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
+import { Section } from '@/styles/register';
 import { CredentialType, credentialValue } from '@/types/auth';
 
 const SignupPage = () => {
@@ -24,7 +25,7 @@ const SignupPage = () => {
   };
 
   return (
-    <section>
+    <Section>
       <AuthForm
         title="회원가입"
         email={credentials.email}
@@ -33,7 +34,7 @@ const SignupPage = () => {
         onSubmit={onSubmit}
         testId="signup-button"
       />
-    </section>
+    </Section>
   );
 };
 

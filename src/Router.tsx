@@ -7,6 +7,7 @@ import { PATH } from '@/constants/path';
 import TodoContextProvider from '@/contexts/TodoContext';
 import { getToken } from '@/utils/token';
 
+const Main = lazy(() => import('@/pages/home'));
 const SigninPage = lazy(() => import('@/pages/signin'));
 const SignupPage = lazy(() => import('@/pages/signup'));
 const TodoPage = lazy(() => import('@/pages/todo'));
@@ -16,6 +17,7 @@ function Router() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
+        <Route path={PATH.MAIN} element={<Main />} />
         <Route element={<PrivateRouter />}>
           <Route path={PATH.TODO} element={<TodoPage />} />
         </Route>
