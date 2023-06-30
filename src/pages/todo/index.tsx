@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { getTodos } from '@/apis/todo';
+import TodoCreator from '@/components/todo/TodoCreator';
 import useTodos from '@/hooks/useTodos';
 
 const TodoPage = () => {
@@ -16,7 +17,11 @@ const TodoPage = () => {
     handleGetTodo();
   }, [dispatch]);
 
-  return <div></div>;
+  return (
+    <div>
+      <TodoCreator />
+    </div>
+  );
 };
 
 export default TodoPage;
