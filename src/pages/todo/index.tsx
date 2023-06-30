@@ -1,5 +1,29 @@
-const todo = () => {
-  return;
+import { useEffect } from 'react';
+
+import { getTodos } from '@/apis/todo';
+import TodoCreator from '@/components/todo/TodoCreator';
+import TodoList from '@/components/todo/TodoList';
+import useTodos from '@/hooks/useTodos';
+
+const TodoPage = () => {
+  const { dispatch } = useTodos();
+
+  useEffect(() => {
+    const handleGetTodo = () => {
+      getTodos().then(({ data }) => {
+        dispatch({ type: 'GET', init: data });
+      });
+    };
+
+    handleGetTodo();
+  }, [dispatch]);
+
+  return (
+    <section>
+      <TodoCreator />
+      <TodoList />
+    </section>
+  );
 };
 
-export default todo;
+export default TodoPage;

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 
 import { PATH } from '@/constants/path';
-import { Section } from '@/style/register';
+import { Section } from '@/styles/register';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
