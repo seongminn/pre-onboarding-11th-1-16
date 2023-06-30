@@ -1,46 +1,42 @@
-import { createContext, Dispatch, PropsWithChildren, useReducer } from 'react';
+import { createContext, Dispatch, PropsWithChildren, Reducer, useReducer } from 'react';
 
 import { Todo } from '@/types/todo';
 
-type CaseType = 'GET' | 'CREATE' | 'UPDATE' | 'DELETE';
-type ActionType = {
-  type: CaseType;
-  init?: Todo[];
-  todo?: Todo;
+type TodoAction =
+  | { type: 'GET'; init: Todo[] }
+  | { type: 'CREATE'; todo: Todo }
+  | { type: 'UPDATE'; todo: Todo }
+  | { type: 'DELETE'; todo: Todo };
+
+type TodoContextValue = {
+  todos: Todo[];
+  dispatch: Dispatch<TodoAction>;
 };
 
-export const TodoContext = createContext<{ todos: Todo[]; dispatch: Dispatch<ActionType> }>({
-  todos: [] as Todo[],
+export const TodoContext = createContext<TodoContextValue>({
+  todos: [],
   dispatch: () => [],
 });
 
-const reducer = (state: Todo[], action: ActionType) => {
+const reducer: Reducer<Todo[], TodoAction> = (state, action) => {
   switch (action.type) {
     case 'GET':
-      if (!action.init) return [];
-
-      return [...action.init];
+      return action.init;
     case 'CREATE':
-      if (!action.todo) return state;
-
       return [...state, action.todo];
     case 'UPDATE':
-      if (!action.todo) return state;
-
-      return state.map((data) => (data.id === action.todo?.id ? { ...action.todo } : data));
+      return state.map((data) => (data.id === action.todo.id ? { ...action.todo } : data));
     case 'DELETE':
-      if (!action.todo) return state;
-
-      return state.filter((data) => data.id !== action.todo?.id);
+      return state.filter((data) => data.id !== action.todo.id);
     default:
       throw new Error('다시 시도해주세요.');
   }
 };
 
-const initTodo: never[] = [];
+const initialTodos: Todo[] = [];
 
 const TodoContextProvider = (props: PropsWithChildren) => {
-  const [todos, dispatch] = useReducer(reducer, initTodo);
+  const [todos, dispatch] = useReducer(reducer, initialTodos);
 
   return <TodoContext.Provider value={{ todos, dispatch }}>{props.children}</TodoContext.Provider>;
 };
