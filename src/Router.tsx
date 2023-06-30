@@ -10,9 +10,11 @@ const SignupPage = lazy(() => import('@/pages/signup'));
 const TodoPage = lazy(() => import('@/pages/todo'));
 const NotFoundPage = lazy(() => import('@/pages/404'));
 
+const loader = () => <p>Loading...</p>;
+
 function Router() {
   return (
-    <Suspense>
+    <Suspense fallback={loader()}>
       <Routes>
         <Route element={<PrivateRouter />}>
           <Route path={PATH.TODO} element={<TodoPage />} />
