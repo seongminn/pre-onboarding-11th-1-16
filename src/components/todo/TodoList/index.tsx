@@ -1,3 +1,5 @@
+import styled from '@emotion/styled';
+
 import { deleteTodo, updateTodo } from '@/apis/todo';
 import useTodos from '@/hooks/useTodos';
 import { Todo, UpdateTodo } from '@/types/todo';
@@ -16,7 +18,7 @@ const TodoList = () => {
   };
 
   return (
-    <ul>
+    <ToDos>
       {todos.map((eachTodo) => (
         <TodoItem
           key={eachTodo.id}
@@ -25,8 +27,15 @@ const TodoList = () => {
           handleDeleteTodo={handleDeleteTodo}
         />
       ))}
-    </ul>
+    </ToDos>
   );
 };
+
+const ToDos = styled.ul`
+  width: 100%;
+  li:first-of-type {
+    border-top: 1px solid rgb(65, 104, 177);
+  }
+`;
 
 export default TodoList;
