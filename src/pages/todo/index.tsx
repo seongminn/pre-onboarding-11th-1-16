@@ -19,10 +19,10 @@ const TodoPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <section>
       <TodoCreator />
       <TodoList />
-    </div>
+    </section>
   );
 };
 

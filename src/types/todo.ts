@@ -4,3 +4,5 @@ export type Todo = {
   isCompleted: boolean;
   userId: number;
 };
+
+export type UpdateTodo = Pick<Todo, 'todo' | 'isCompleted'>;

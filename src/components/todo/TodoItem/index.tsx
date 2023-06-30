@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
 import useInput from '@/hooks/useInput';
-import { Todo } from '@/types/todo';
+import { Todo, UpdateTodo } from '@/types/todo';
 
 interface TodoItemProps {
   todoInfo: Todo;
-  handleUpdateTodo: (id: number, todo: Pick<Todo, 'todo' | 'isCompleted'>) => void;
+  handleUpdateTodo: (id: number, todo: UpdateTodo) => void;
   handleDeleteTodo: (todo: Todo) => void;
 }
 

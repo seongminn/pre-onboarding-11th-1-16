@@ -1,4 +1,4 @@
-import { Todo } from '@/types/todo';
+import { Todo, UpdateTodo } from '@/types/todo';
 
 import { instance } from './instance';
 
@@ -14,7 +14,7 @@ export const createTodo = async (body: Pick<Todo, 'todo'>) => {
   });
 };
 
-export const updateTodo = async (id: number, body: Pick<Todo, 'isCompleted' | 'todo'>) => {
+export const updateTodo = async (id: number, body: UpdateTodo) => {
   return instance.put<Todo>(`/todos/${id}`, body).catch((err) => {
     throw new Error(err);
   });

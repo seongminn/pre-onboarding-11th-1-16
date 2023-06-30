@@ -1,13 +1,13 @@
 import { deleteTodo, updateTodo } from '@/apis/todo';
 import useTodos from '@/hooks/useTodos';
-import { Todo } from '@/types/todo';
+import { Todo, UpdateTodo } from '@/types/todo';
 
 import TodoItem from '../TodoItem';
 
 const TodoList = () => {
   const { todos, dispatch } = useTodos();
 
-  const handleUpdateTodo = (id: number, todo: Pick<Todo, 'todo' | 'isCompleted'>) => {
+  const handleUpdateTodo = (id: number, todo: UpdateTodo) => {
     updateTodo(id, { ...todo }).then(({ data }) => dispatch({ type: 'UPDATE', todo: data }));
   };
 
