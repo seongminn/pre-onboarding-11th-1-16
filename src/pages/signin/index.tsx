@@ -2,19 +2,18 @@ import React, { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { postSignin } from '@/apis/auth';
-import AuthForm from '@/components/AuthForm';
+import AuthForm from '@/components/auth/AuthForm';
+import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
+import { CredentialType, credentialValue } from '@/types/auth';
 
-const Signin = () => {
-  const { value: credentials, onChange } = useInput({
-    email: '',
-    password: '',
-  });
+const SigninPage = () => {
+  const { value: credentials, onChange } = useInput<CredentialType>(credentialValue);
   const navigate = useNavigate();
 
   const handleSignIn = () => {
     postSignin(credentials).then(() => {
-      navigate('/todo');
+      navigate(PATH.TODO, { replace: true });
     });
   };
 
@@ -38,4 +37,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SigninPage;
