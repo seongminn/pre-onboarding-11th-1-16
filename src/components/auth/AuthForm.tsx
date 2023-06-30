@@ -19,7 +19,7 @@ const AuthForm = (props: AuthFormProps) => {
   const { isValidateEmail, isValidatePassword } = AuthValidator(email, password);
 
   return (
-    <From onSubmit={onSubmit} className="form">
+    <Form onSubmit={onSubmit} className="form">
       <h1 className="title">{title}</h1>
       <label htmlFor="email" className="form-label">
         이메일
@@ -51,11 +51,11 @@ const AuthForm = (props: AuthFormProps) => {
       <button data-testid={testId} disabled={!isValidateEmail || !isValidatePassword}>
         제출
       </button>
-    </From>
+    </Form>
   );
 };
 
-const From = styled.form`
+const Form = styled.form`
   display: flex;
   width: 20%;
   height: 35%;

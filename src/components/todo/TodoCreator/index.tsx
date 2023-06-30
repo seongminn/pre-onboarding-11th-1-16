@@ -19,7 +19,7 @@ const TodoCreator = () => {
   };
 
   return (
-    <FormTitle onSubmit={handleCreateTodo} className="create-form">
+    <AddToDoForm onSubmit={handleCreateTodo} className="create-form">
       <h1>TO DO LIST</h1>
       <input
         name="todo"
@@ -31,11 +31,11 @@ const TodoCreator = () => {
       <button type="submit" data-testid="new-todo-add-button">
         추가
       </button>
-    </FormTitle>
+    </AddToDoForm>
   );
 };
 
-const FormTitle = styled.form`
+const AddToDoForm = styled.form`
   display: flex;
   place-items: left;
   h1 {
