@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { ChangeEvent, FormEvent } from 'react';
 
 interface AuthFormProps {
@@ -13,7 +14,7 @@ const AuthForm = (props: AuthFormProps) => {
   const { title, email, password, onChange, onSubmit, testId } = props;
 
   return (
-    <form onSubmit={onSubmit} className="form">
+    <From onSubmit={onSubmit} className="form">
       <h1 className="title">{title}</h1>
       <label htmlFor="email" className="form-label">
         이메일
@@ -39,8 +40,46 @@ const AuthForm = (props: AuthFormProps) => {
         data-testid="password-input"
       />
       <button data-testid={testId}>제출</button>
-    </form>
+    </From>
   );
 };
+
+const From = styled.form`
+  display: flex;
+  width: 20%;
+  height: 30%;
+  justify-content: space-around;
+
+  flex-direction: column;
+  h1 {
+    font-size: 1.6em;
+  }
+  label {
+    font-size: small;
+  }
+  input {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 3px;
+    border: none;
+    &:focus {
+      outline: 2px solid rgb(179, 184, 204);
+    }
+  }
+  button {
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+    margin-top: 10px;
+    background-color: rgb(229, 234, 255);
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: rgb(179, 184, 204);
+    }
+  }
+`;
 
 export default AuthForm;
