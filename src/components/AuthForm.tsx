@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import { ChangeEvent, FormEvent } from 'react';
 
+import { AUTH_MESSAGE } from '@/constants/validation';
+import { AuthValidator } from '@/utils/validator';
+
 interface AuthFormProps {
   title: string;
   email: string;
@@ -12,6 +15,8 @@ interface AuthFormProps {
 
 const AuthForm = (props: AuthFormProps) => {
   const { title, email, password, onChange, onSubmit, testId } = props;
+
+  const { isValidateEmail, isValidatePassword } = AuthValidator(email, password);
 
   return (
     <From onSubmit={onSubmit} className="form">
@@ -27,6 +32,9 @@ const AuthForm = (props: AuthFormProps) => {
         placeholder="이메일을 입력해주세요!"
         data-testid="email-input"
       />
+      <p className={`form-log ${!isValidateEmail && 'error'}`}>
+        {!isValidateEmail ? AUTH_MESSAGE.EMAIL_ERROR : AUTH_MESSAGE.EMAIL_SUCCESS}
+      </p>
 
       <label htmlFor="password" className="form-label">
         비밀번호
@@ -39,7 +47,10 @@ const AuthForm = (props: AuthFormProps) => {
         placeholder="비밀번호를 입력해주세요!"
         data-testid="password-input"
       />
-      <button data-testid={testId}>제출</button>
+      <p>{!isValidatePassword ? AUTH_MESSAGE.PASSWORD_ERROR : AUTH_MESSAGE.PASSWORD_SUCCESS}</p>
+      <button data-testid={testId} disabled={!isValidateEmail || !isValidatePassword}>
+        제출
+      </button>
     </From>
   );
 };
