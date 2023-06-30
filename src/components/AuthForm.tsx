@@ -50,7 +50,9 @@ const AuthForm = (props: AuthFormProps) => {
         {!isValidatePassword ? AUTH_MESSAGE.PASSWORD_ERROR : AUTH_MESSAGE.PASSWORD_SUCCESS}
       </p>
 
-      <button data-testid={testId}>제출</button>
+      <button data-testid={testId} disabled={!isValidateEmail || !isValidatePassword}>
+        제출
+      </button>
     </form>
   );
 };
