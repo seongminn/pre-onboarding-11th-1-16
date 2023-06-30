@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { getTodos } from '@/apis/todo';
 import TodoCreator from '@/components/todo/TodoCreator';
+import TodoList from '@/components/todo/TodoList';
 import useTodos from '@/hooks/useTodos';
 
 const TodoPage = () => {
@@ -20,6 +21,7 @@ const TodoPage = () => {
   return (
     <div>
       <TodoCreator />
+      <TodoList />
     </div>
   );
 };
