@@ -1,41 +1,40 @@
 import React, { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { postSignup } from '@/apis/auth';
+import { postSignin } from '@/apis/auth';
 import AuthForm from '@/components/AuthForm';
+import { PATH } from '@/constants/path';
 import useInput from '@/hooks/useInput';
+import { CredentialType, credentialValue } from '@/types/auth';
 
-const Signup = () => {
-  const { value: credentials, onChange } = useInput({
-    email: '',
-    password: '',
-  });
+const SigninPage = () => {
+  const { value: credentials, onChange } = useInput<CredentialType>(credentialValue);
   const navigate = useNavigate();
 
-  const handleSignup = () => {
-    postSignup(credentials).then(() => {
-      navigate('/signin');
+  const handleSignIn = () => {
+    postSignin(credentials).then(() => {
+      navigate(PATH.TODO, { replace: true });
     });
   };
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    handleSignup();
+    handleSignIn();
   };
 
   return (
     <section>
       <AuthForm
-        title="회원가입"
+        title="로그인"
         email={credentials.email}
         password={credentials.password}
         onChange={onChange}
         onSubmit={onSubmit}
-        testId="signup-button"
+        testId="signin-button"
       />
     </section>
   );
 };
 
-export default Signup;
+export default SigninPage;

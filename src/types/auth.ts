@@ -6,3 +6,10 @@ export interface PostAuthRequest {
 export interface PostSigninResponse {
   access_token: string;
 }
+
+export const credentialValue = {
+  email: '',
+  password: '',
+};
+
+export type CredentialType = typeof credentialValue;
